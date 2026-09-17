@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JosConnect — Accueil</title>
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="accueil.html"><img src="images/logo.svg" alt="JosConnect"><span>JosConnect</span></a>
+  <div class="top-actions">
+    <button id="profileBtn" class="profile-mini" title="Mon profil">
+      <span id="avatar" class="avatar">J</span><span id="headerName">Utilisateur</span>
+    </button>
+    <button id="logoutBtn" class="logout">Déconnexion</button>
+  </div>
+</header>
+
+
+      <section class="stories-card" aria-label="Stories">
+        <div class="section-head">
+          <div>
+            <h2>Stories</h2>
+            <p>Partage un moment et découvre ceux des autres.</p>
+          </div>
+          <button class="story-create-btn" id="openStoryCreator">＋ Créer une story</button>
+        </div>
+
+        <div class="stories-row" id="storiesRow">
+          <button class="story-add" id="storyAddButton">
+            <span class="story-add-avatar" id="storyAddAvatar">J</span>
+            <strong>Ma story</strong>
+            <small>Ajouter</small>
+          </button>
+          <div id="storiesList" class="stories-list"></div>
+        </div>
+        <div id="storiesEmpty" class="stories-empty">Aucune story récente pour le moment.</div>
+      </section>
+
+<main class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a class="active" href="accueil.html">🏠 <span>Accueil</span></a>
+      <a href="#" data-coming="Publications">📰 <span>Publications</span></a>
+      <a href="#" data-coming="Messages">💬 <span>Messages</span></a>
+      <a href="#" data-coming="Notifications">🔔 <span>Notifications</span></a>
+      <a href="#" data-coming="Mon profil">👤 <span>Mon profil</span></a>
+      <a href="#" data-coming="Paramètres">⚙️ <span>Paramètres</span></a>
+    </nav>
+  </aside>
+
+  <section class="feed">
+    <div class="welcome card">
+      <div>
+        <span class="eyebrow">BIENVENUE SUR JOSCONNECT</span>
+        <h1>Bonjour, <span id="welcomeName">Utilisateur</span> 👋</h1>
+        <p>Ton espace personnel est prêt. Connecte-toi, partage et découvre ta communauté.</p>
+      </div>
+      <div id="welcomeAvatar" class="big-avatar">J</div>
+    </div>
+
+    <div class="composer card">
+      <div class="composer-head">
+        <div id="composerAvatar" class="avatar">J</div>
+        <div>
+          <strong id="composerName">Utilisateur</strong>
+          <span>Quoi de neuf aujourd'hui ?</span>
+        </div>
+      </div>
+      <textarea id="postText" placeholder="Écris quelque chose à ta communauté..." maxlength="500"></textarea>
+      <div class="composer-bottom">
+        <span id="charCount">0 / 500</span>
+        <button id="publishBtn" class="primary">Publier</button>
+      </div>
+    </div>
+
+    <div id="feedPosts"></div>
+  </section>
+
+  <aside class="rightbar">
+    <div class="card account-card">
+      <h3>Mon compte</h3>
+      <div class="account-line">
+        <div id="sideAvatar" class="big-avatar small">J</div>
+        <div><strong id="sideName">Utilisateur</strong><span id="sideEmail">—</span></div>
+      </div>
+      <button id="sideLogout" class="outline">Se déconnecter</button>
+    </div>
+    <div class="card info-card">
+      <h3>JosConnect</h3>
+      <p>Une communauté pour rester connecté avec les personnes qui comptent.</p>
+      <span class="status">● Compte connecté</span>
+    </div>
+  </aside>
+</main>
+
+<div id="toast" class="toast"></div>
+<script type="module" src="home.js"></script>
+  <script type="module" src="stories.js"></script>
+
+  <div class="story-modal hidden" id="storyCreatorModal" role="dialog" aria-modal="true" aria-labelledby="storyModalTitle">
+    <div class="story-modal-box">
+      <button class="modal-close" id="closeStoryCreator" aria-label="Fermer">×</button>
+      <h2 id="storyModalTitle">Créer une story</h2>
+      <p class="modal-help">Écris un moment à partager. Ta story reste visible pendant 24 heures.</p>
+      <textarea id="storyText" maxlength="500" placeholder="Qu'est-ce que tu veux partager ?"></textarea>
+      <div class="story-actions">
+        <button class="btn-secondary" id="cancelStory">Annuler</button>
+        <button class="btn-primary" id="publishStory">Publier la story</button>
+      </div>
+      <div id="storyUploadStatus" class="story-status"></div>
+    </div>
+  </div>
+
+  <div class="story-viewer hidden" id="storyViewer" role="dialog" aria-modal="true">
+    <button class="viewer-close" id="closeStoryViewer" aria-label="Fermer">×</button>
+    <button class="viewer-prev" id="storyPrev" aria-label="Story précédente">‹</button>
+    <div class="viewer-content">
+      <div class="viewer-progress" id="viewerProgress"></div>
+      <div class="viewer-author">
+        <span class="viewer-avatar" id="viewerAvatar"></span>
+        <div><strong id="viewerName"></strong><small id="viewerTime"></small></div>
+      </div>
+      <div id="viewerMedia" class="viewer-media"></div>
+      <div id="viewerCaption" class="viewer-caption"></div>
+    </div>
+    <button class="viewer-next" id="storyNext" aria-label="Story suivante">›</button>
+  </div>
+
+</body>
+</html>
